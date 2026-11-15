@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "poll_interval": 5,
+  "server": {"name": "Home Cinema"},
+  "summary": {"session_count": 2, "known_bitrate_count": 2, "unknown_bitrate_count": 0, "known_bitrate_kbps": 17400, "bitrate_complete": true},
+  "items": [
+    {"session_id":"sample-one","profile_name":"Morgan","series_name":"The Quiet Orbit","media_title":"A Signal Home","episode_name":"A Signal Home","season_number":1,"episode_number":4,"poster_url":"posters/orbit.svg","position_seconds":1243,"file_duration":2820,"playback_state":"playing","play_method_key":"direct","play_method_label":"Direct Play","video_output_resolution":"1080p","video_output_codec":"H.264","stream_bitrate_kbps":8200,"client_label":"Living room TV","stream_location":"Local"},
+    {"session_id":"sample-two","profile_name":"Riley","series_name":"Wild Meridian","media_title":"Above the Tree Line","episode_name":"Above the Tree Line","season_number":2,"episode_number":7,"poster_url":"posters/meridian.svg","position_seconds":678,"file_duration":2580,"playback_state":"paused","play_method_key":"transcode","play_method_label":"Transcode","video_output_resolution":"1080p","video_output_codec":"H.264","stream_bitrate_kbps":9200,"client_label":"Web browser","stream_location":"Remote","node_display_name":"Media node"}
+  ]
+}

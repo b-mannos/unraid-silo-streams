@@ -1,0 +1,28 @@
+name: Verify
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+      - uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # v2
+        with:
+          php-version: '8.3'
+          extensions: curl
+          coverage: none
+      - name: Require test runtimes
+        run: |
+          command -v php
+          command -v node
+          command -v python3
+          php -r 'exit(extension_loaded("curl") ? 0 : 1);'
+      - name: Verify source, behavior and release metadata
+        run: bash scripts/verify.sh

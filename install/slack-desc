@@ -1,0 +1,12 @@
+           |-----handy-ruler------------------------------------------------------|
+silo-streams: silo-streams (Silo playback monitoring for Unraid)
+silo-streams:
+silo-streams: Dashboard stream monitoring through the native Silo admin API.
+silo-streams: Requires Unraid 7, PHP 8.2 or later, and PHP cURL.
+silo-streams: Settings and the API key stay on the Unraid server.
+silo-streams: No playback control or retained history.
+silo-streams:
+silo-streams:
+silo-streams:
+silo-streams:
+silo-streams:

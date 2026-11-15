@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<Plugin>
+  <Name>Silo Streams</Name>
+  <Overview>Native Silo live monitoring with posters, playback progress, client, quality and known bitrate directly on the Unraid 7 dashboard. Read-only: no playback control and no retained history.</Overview>
+  <PluginURL>https://raw.githubusercontent.com/b-mannos/unraid-silo-streams/main/silo-streams.plg</PluginURL>
+  <PluginAuthor>b-mannos</PluginAuthor>
+  <Support>https://github.com/b-mannos/unraid-silo-streams/issues</Support>
+  <Project>https://github.com/b-mannos/unraid-silo-streams</Project>
+  <ReadMe>https://raw.githubusercontent.com/b-mannos/unraid-silo-streams/main/README.md</ReadMe>
+  <Category>Tools:Utilities</Category>
+  <Beta>true</Beta>
+  <MinVer>7.0.0</MinVer>
+  <Icon>https://raw.githubusercontent.com/b-mannos/unraid-silo-streams/main/assets/icon.png</Icon>
+  <Screenshot>https://raw.githubusercontent.com/b-mannos/unraid-silo-streams/main/assets/screenshot.png</Screenshot>
+  <Screenshot>https://raw.githubusercontent.com/b-mannos/unraid-silo-streams/main/assets/screenshot-dark.png</Screenshot>
+  <License>MIT</License>
+</Plugin>

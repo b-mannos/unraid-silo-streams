@@ -1,0 +1,13 @@
+Menu="Dashboard:0"
+Icon="film"
+Tag="film"
+---
+<?php
+require_once '/usr/local/emhttp/plugins/silo-streams/includes/common.php';
+require_once '/usr/local/emhttp/plugins/silo-streams/includes/widget.php';
+$siloDashboardConfig = silo_load_config();
+$mytiles['silo-streams']['column1'] = '<tbody class="sortable" title="Silo Streams"><tr><td>' . silo_widget_markup((int) $siloDashboardConfig['config']['poll_interval']) . '</td></tr></tbody>';
+?>
+<link rel="stylesheet" href="/plugins/silo-streams/assets/streams.css?v=2026.11.15c">
+<script src="/plugins/silo-streams/assets/streams.js?v=2026.11.15c" defer></script>
+<script src="/plugins/silo-streams/assets/dashboard.js?v=2026.11.15c" defer></script>

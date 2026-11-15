@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<CommunityApplications>
+  <Profile>Unraid dashboard playback monitoring for Silo: active streams, posters, progress and playback details. Maintained by b-mannos. Help and bug reports are available through the project issues page.</Profile>
+  <Icon>https://raw.githubusercontent.com/b-mannos/unraid-silo-streams/main/assets/icon.png</Icon>
+  <WebPage>https://github.com/b-mannos/unraid-silo-streams</WebPage>
+</CommunityApplications>

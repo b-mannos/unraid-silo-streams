@@ -1,0 +1,35 @@
+Menu="SiloStreams"
+Title="Silo Streams"
+Tag="film"
+---
+<?php
+require_once '/usr/local/emhttp/plugins/silo-streams/includes/common.php';
+$siloSaved = silo_load_config();
+$siloSettings = $siloSaved['raw'];
+$siloEscape = static fn($value) => htmlspecialchars((string) $value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+?>
+<link rel="stylesheet" href="/plugins/silo-streams/assets/streams.css?v=2026.11.15c">
+<section class="ss-settings">
+    <h2>Silo Streams</h2>
+    <p>Show active Silo playback on your Unraid dashboard.</p>
+    <form id="silo-streams-settings" action="/plugins/silo-streams/api.php" method="post">
+        <input type="hidden" name="csrf_token" value="<?= $siloEscape(silo_csrf_token() ?? '') ?>">
+        <label for="ss-server-name">Server name</label>
+        <input id="ss-server-name" name="server_name" maxlength="160" value="<?= $siloEscape($siloSettings['server_name']) ?>" placeholder="Silo">
+        <label for="ss-server-url">Server URL</label>
+        <input id="ss-server-url" name="server_url" type="url" required maxlength="2048" value="<?= $siloEscape($siloSettings['server_url']) ?>" placeholder="http://silo.local:8090" aria-describedby="ss-url-help">
+        <p id="ss-url-help">Use the native Silo web address, including any path prefix.</p>
+        <label for="ss-api-key">API key</label>
+        <input id="ss-api-key" name="api_key" type="password" autocomplete="new-password" maxlength="4096" aria-describedby="ss-key-help" value="">
+        <p id="ss-key-help"><?= silo_config_configured($siloSaved['config']) ? 'A key is saved. Leave blank to keep it.' : 'Enter an admin-owned key with admin:monitor:read permission.' ?></p>
+        <label for="ss-interval">Refresh interval (seconds)</label>
+        <input id="ss-interval" name="poll_interval" type="number" min="5" max="60" required value="<?= $siloEscape($siloSettings['poll_interval']) ?>">
+        <div class="ss-settings-actions">
+            <button type="submit" name="action" value="save">Save</button>
+            <button type="submit" name="action" value="test">Test connection</button>
+            <a href="/Dashboard">Dashboard</a>
+        </div>
+        <p id="ss-settings-result" role="status" aria-live="polite"><?= $siloEscape($siloSaved['error'] ?? '') ?></p>
+    </form>
+</section>
+<script src="/plugins/silo-streams/assets/settings.js?v=2026.11.15c"></script>

@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Silo Streams · sample preview</title><link rel="stylesheet" href="../src/usr/local/emhttp/plugins/silo-streams/assets/streams.css"><style>
+:root{font-family:Arial,Helvetica,sans-serif;color:#303030;background:#eee;color-scheme:light}body{margin:0;padding:28px 16px}main{max-width:674px;margin:auto}.preview-bar{display:flex;gap:16px;align-items:center;justify-content:space-between;margin-bottom:16px}.preview-bar p{font-size:12px;margin:0;color:#666}button{font:inherit;font-size:12px;padding:7px 10px;border:1px solid #bbb;border-radius:3px;background:transparent;color:inherit;cursor:pointer}.preview-widget{background:#fff;border:1px solid #d6d6d6;border-radius:4px;box-shadow:0 2px 5px #00000008}.preview-note{font-size:11px;color:#737373;line-height:1.6}.is-dark{background:#181a1b;color:#ddd;color-scheme:dark}.is-dark .preview-widget{background:#242628;border-color:#444}.is-dark .preview-bar p,.is-dark .preview-note{color:#aaa}@media(max-width:380px){body{padding:16px 8px}}
+</style></head><body><main><div class="preview-bar"><p>Sample preview · fictional sessions</p><button id="theme" type="button">Dark theme</button></div><div class="preview-widget"><div data-silo-streams data-theme="light" data-icon="../assets/icon.png"></div></div><p class="preview-note">Original sample artwork and fictional viewers. Playback indicators show status only. No live server connection.</p></main><script src="../src/usr/local/emhttp/plugins/silo-streams/assets/streams.js"></script><script>
+'use strict';
+const root = document.querySelector('[data-silo-streams]');
+document.getElementById('theme').addEventListener('click', function () {
+  const dark = document.body.classList.toggle('is-dark');
+  root.dataset.theme = dark ? 'dark' : 'light';
+  this.textContent = dark ? 'Light theme' : 'Dark theme';
+});
+fetch('sample.json').then(response => response.json()).then(payload => {
+  const state = new URLSearchParams(location.search).get('state');
+  if(state === 'empty') {payload.items=[];payload.summary={session_count:0,known_bitrate_count:0,known_bitrate_kbps:0,bitrate_complete:true};}
+  if(state === 'paused') payload.items.forEach(item => item.playback_state='paused');
+  if(state === 'unknown') {payload.items.forEach(item => {item.stream_bitrate_kbps=null;item.position_seconds=null;item.file_duration=null;item.playback_state='unknown';item.play_method_label='Unknown method';item.video_output_resolution=null;item.video_output_codec=null;});payload.summary={session_count:2,known_bitrate_count:0,known_bitrate_kbps:0,bitrate_complete:false};}
+  SiloStreams.render(root,payload);
+  if(state === 'error') {root._siloStale=true;root.querySelector('.silo-streams__status').textContent='Unable to refresh · showing last received streams. Progress is paused.';}
+}).catch(() => {root.textContent='Serve this preview through a local HTTP server to load the sample.';});
+</script></body></html>
